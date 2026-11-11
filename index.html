@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MedTech Simulator – Medizintechnik im virtuellen Krankenhaus</title>
+  <meta name="description" content="Interaktive Lernumgebung: Medizingeräte im klinischen Einsatz – Intensivstation, OP, Notaufnahme, Radiologie und mehr. Fiktive Daten, nur für Lehrzwecke.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b6e8f'/%3E%3Cpath d='M3 18h6l2-5 3 10 3-14 3 9h9' fill='none' stroke='%2363f5a0' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#/">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f9bb8"/><path d="M3 18h6l2-5 3 10 3-14 3 9h9" fill="none" stroke="#c6ffe0" stroke-width="2.4" stroke-linejoin="round"/></svg>
+      <span>MedTech Simulator<small>Virtuelles Lernkrankenhaus</small></span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#/">Lageplan</a>
+      <a href="#/lab">Simulationslabor</a>
+      <a href="#/challenges">Herausforderungen</a>
+      <a href="#/progress">Fortschritt</a>
+      <a href="#/about">Hinweise</a>
+    </nav>
+  </header>
+  <div class="disclaimer" role="note">Lernumgebung · Alle Patientendaten sind fiktiv · Kein Medizinprodukt – nicht zur Diagnose oder Therapie verwenden</div>
+  <main id="main" tabindex="-1"></main>
+  <div id="toasts" aria-live="polite"></div>
+  <noscript><p style="padding:20px">Für den MedTech Simulator wird JavaScript benötigt.</p></noscript>
+
+  <!-- Kern -->
+  <script src="js/core/physio.js"></script>
+  <script src="js/core/live.js"></script>
+  <script src="js/core/draw.js"></script>
+  <script src="js/core/app.js"></script>
+  <!-- Bereiche -->
+  <script src="js/areas/icu.js"></script>
+  <script src="js/areas/or.js"></script>
+  <script src="js/areas/er.js"></script>
+  <script src="js/areas/radiology.js"></script>
+  <script src="js/areas/ward.js"></script>
+  <script src="js/areas/pacu.js"></script>
+  <script src="js/areas/dialysis.js"></script>
+  <script src="js/areas/lab.js"></script>
+  <script src="js/areas/neo.js"></script>
+  <script src="js/areas/cathlab.js"></script>
+  <!-- AREAS:END -->
+  <!-- Simulationen -->
+  <script src="js/sim/ecg.js"></script>
+  <script src="js/sim/spo2.js"></script>
+  <script src="js/sim/bp.js"></script>
+  <script src="js/sim/resp.js"></script>
+  <script src="js/sim/infusion.js"></script>
+  <script src="js/sim/defib.js"></script>
+  <script src="js/sim/imaging.js"></script>
+  <!-- SIMS:END -->
+  <script>MTS.boot();</script>
+</body>
+</html>
