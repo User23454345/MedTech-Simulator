@@ -92,8 +92,14 @@
     const waves = [];
     root.querySelectorAll('[data-wave]').forEach((g) => {
       const kind = g.getAttribute('data-wave');
-      const def = WAVES[kind];
+      let def = WAVES[kind];
       if (!def) return;
+      if (g.hasAttribute('data-min') || g.hasAttribute('data-max')) {
+        def = Object.assign({}, def, {
+          min: g.hasAttribute('data-min') ? Number(g.getAttribute('data-min')) : def.min,
+          max: g.hasAttribute('data-max') ? Number(g.getAttribute('data-max')) : def.max,
+        });
+      }
       const [x, y, w, h] = g.getAttribute('data-rect').split(',').map(Number);
       const color = g.getAttribute('data-color') || def.color;
       const seconds = Number(g.getAttribute('data-seconds')) || def.seconds;

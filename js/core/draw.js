@@ -159,7 +159,7 @@
       const def = (MTS.Live && MTS.Live.WAVES[wv.kind]) || { color: '#3f6' };
       const color = wv.color || def.color;
       s += `<text x="${x + 5}" y="${ry + 10}" font-size="8" fill="${color}" font-family="monospace">${esc(wv.label || wv.kind.toUpperCase())}</text>`;
-      s += `<g data-wave="${wv.kind}" data-rect="${x + 4},${ry + 3},${w - numW - 10},${rowH - 6}" data-color="${color}" ${wv.seconds ? `data-seconds="${wv.seconds}"` : ''}></g>`;
+      s += `<g data-wave="${wv.kind}" data-rect="${x + 4},${ry + 3},${w - numW - 10},${rowH - 6}" data-color="${color}" ${wv.seconds ? `data-seconds="${wv.seconds}"` : ''} ${wv.min != null ? `data-min="${wv.min}"` : ''} ${wv.max != null ? `data-max="${wv.max}"` : ''}></g>`;
       if (o.numerics && wv.vital) {
         const nx = x + w - numW;
         s += `<line x1="${nx}" y1="${ry + 2}" x2="${nx}" y2="${ry + rowH - 2}" stroke="#1d2f37"/>`;

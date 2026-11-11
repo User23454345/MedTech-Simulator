@@ -7,7 +7,7 @@
 
   /* ---------------- Raumszene ---------------- */
   function render(D) {
-    let s = D.room({ window: true, windowX: 1180, door: true, doorX: 40, sign: 'INTENSIVSTATION · BETTPLATZ 3', signX: 1180 });
+    let s = D.room({ window: true, windowX: 1180, door: true, doorX: 40, sign: 'INTENSIVSTATION · BETTPLATZ 3', signX: 262 });
     // Wandschiene & Handdesinfektion
     s += `<rect x="240" y="300" width="1340" height="10" rx="3" fill="#b8c3ca"/>`;
     s += D.sanitizer(1120, 330);
@@ -556,7 +556,7 @@
       vitals: { hr: 90, sbp: 120, dbp: 66, spo2: 96, rr: 16, etco2: 38, ventMode: 'VC', vt: 450, peep: 8, fio2: 0.4, compliance: 42, resistance: 12 },
       intro: '<p>Es ist ruhig auf der Station. Beobachten Sie den Monitor und das Beatmungsgerät aufmerksam.</p>',
       steps: [
-        { title: 'Alarm!', vitals: { resistance: 48, spo2: 90, etco2: 46, hr: 108 }, duration: 8, highlight: ['vent'], alarms: [{ id: 'vent-paw', prio: 'high', text: 'Paw HOCH (Beatmung)', device: 'vent', source: 'vent' }],
+        { title: 'Alarm!', vitals: { resistance: 48, spo2: 90, etco2: 46, hr: 108 }, duration: 8, highlight: ['vent'], alarms: [{ id: 'paw', prio: 'high', text: 'Paw HOCH (Beatmung)', device: 'vent', source: 'vent' }],
           text: '<p>Das Beatmungsgerät alarmiert: <b>Atemwegsdruck hoch</b>. Die Paw-Kurve zeigt einen deutlich höheren Spitzendruck. Die SpO₂ fällt, die Herzfrequenz steigt.</p><p>Beobachten Sie die Werte am Beatmungsgerät (Ppeak) – sie ändern sich gerade.</p>',
           question: { q: 'Der Spitzendruck steigt stark, der Plateaudruck bleibt nahezu gleich. Worauf deutet das hin?', options: ['Erhöhter Atemwegswiderstand (z. B. Sekret, abgeknickter Tubus)', 'Verminderte Lungen-Compliance (z. B. Pneumothorax)', 'Leckage im Schlauchsystem', 'Defekter O₂-Sensor'], correct: 0, explain: 'Ppeak − Pplat ist der resistive Anteil (R × Flow). Steigt nur Ppeak, liegt ein Widerstandsproblem vor. Bei Complianceproblemen steigen Ppeak und Pplat gemeinsam.' } },
         { title: 'Systematisch vorgehen', highlight: ['vent', 'bed'], text: '<p>Sie gehen nach dem <b>DOPE-Schema</b> vor.</p>',

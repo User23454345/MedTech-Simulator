@@ -419,7 +419,7 @@
       if (!ctx) return;
       const alarms = ctx.area.patient ? ctx.model.checkAlarms(ctx.limits) : [];
       const extra = ctx.extraAlarms || [];
-      const all = extra.concat(alarms);
+      const all = extra.concat(alarms.filter((a) => !extra.some((e) => e.id === a.id)));
       const bar = $('.alarm-bar', ctx.main);
       if (all.length) {
         bar.hidden = false;

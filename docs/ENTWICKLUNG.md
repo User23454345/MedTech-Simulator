@@ -46,6 +46,7 @@ Leitungen/Kabel gehören **nicht** in Gerätegruppen (sonst wird die Bounding-Bo
 
 Live-Elemente in der Szene:
 - `<g data-wave="ecg|pleth|art|co2|paw|flow|vol" data-rect="x,y,w,h">` → animierte Kurve aus dem PatientModel
+  (optional `data-min`/`data-max` für eigene Skalierung, z. B. Neonatologie; `data-seconds`, `data-color`)
 - `<text data-vital="hr|spo2|nibp|art|map|rr|etco2|temp|fio2|peep|vt|ppeak|pplat|mv|mode">` → Zahlenwert
 - `class="alarm-lamp"` → leuchtet in Alarmfarbe; `data-alarmtext` → Alarmtext des Monitors
 
