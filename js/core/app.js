@@ -190,6 +190,7 @@
               <div><b>${Array.from(areas.values()).reduce((s, a) => s + a.scenarios.length, 0)}</b><span>Szenarien</span></div>
             </div>
           </div>
+          <div class="hero-visual" aria-hidden="true"><svg viewBox="0 0 440 250"></svg><span>Live · fiktiver Lernpatient</span></div>
         </section>
         <section class="card map-card">
           <div class="card-head"><h2>Lageplan</h2><span class="muted">Bereich anklicken, um ihn zu betreten</span></div>
@@ -204,6 +205,18 @@
           <div class="card"><h3>🎯 Herausforderungen</h3><p>Geräte finden, Aufgaben zuordnen, Komponenten identifizieren, Alarme erkennen und Geräteverbünde erklären.</p></div>
         </section>
       </div>`;
+    // Live-Monitor im Kopfbereich
+    const hv = $('.hero-visual svg', main);
+    if (hv) {
+      hv.innerHTML = MTS.draw.defs() + `<rect x="0" y="0" width="440" height="250" rx="16" fill="#0a1a20" stroke="#24505e"/>` +
+        MTS.draw.screenWaves(10, 10, 420, 230, [
+          { kind: 'ecg', label: 'II', vital: 'hr', vlabel: 'HF', unit: '/min' },
+          { kind: 'art', label: 'ART', vital: 'art', vital2: 'map', vlabel: 'ART', unit: 'mmHg' },
+          { kind: 'pleth', label: 'Pleth', vital: 'spo2', vlabel: 'SpO₂', unit: '%' },
+          { kind: 'co2', label: 'CO₂', vital: 'etco2', vlabel: 'etCO₂', unit: 'mmHg' },
+        ], { title: 'LERNPATIENT · FIKTIV' });
+      addCleanup(MTS.Live.bindSvg(hv, new MTS.PatientModel({ hr: 72, sbp: 124, dbp: 76, spo2: 98, etco2: 37, rr: 13 })));
+    }
     $$('.map-room').forEach((g) => {
       const id = g.getAttribute('data-area');
       const open = () => (areas.has(id) ? go('area/' + id) : toast('Dieser Bereich ist noch in Vorbereitung.'));
